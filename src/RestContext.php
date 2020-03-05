@@ -3,12 +3,11 @@
 namespace Jeckel\Gherkin;
 
 use Behat\Gherkin\Node\TableNode;
-use Codeception\Configuration;
 use Codeception\Lib\Interfaces\DependsOnModule;
-use Codeception\Lib\ModuleContainer;
 use Codeception\Module\REST;
 use Codeception\Util\Fixtures;
 use Exception;
+use InvalidArgumentException;
 use Jeckel\Gherkin\FilePath\FileHelper;
 use Jeckel\Gherkin\FilePath\FileHelperAwareInterface;
 use Jeckel\Gherkin\FilePath\FileHelperAwareTrait;
@@ -172,7 +171,7 @@ class RestContext extends ContextAbstract implements DependsOnModule, FileHelper
             $this->getFileHelper()->getAbsolutePathTo($filepath, FileHelper::PATH_TO_DATA)
         );
         if (! $fileContent) {
-            throw new \InvalidArgumentException(sprintf('Enable to open file %s', $filepath));
+            throw new InvalidArgumentException(sprintf('Enable to open file %s', $filepath));
         }
         $this->checkResponseContainsJson($fileContent);
     }
@@ -185,7 +184,7 @@ class RestContext extends ContextAbstract implements DependsOnModule, FileHelper
         $json = json_decode($jsonString, true);
 
         if (null === $json && json_last_error() != JSON_ERROR_NONE) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 sprintf('Argument provided is not valid JSON: %s', json_last_error_msg())
             );
         }
