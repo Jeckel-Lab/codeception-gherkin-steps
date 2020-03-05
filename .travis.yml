@@ -12,7 +12,7 @@ script:
   - ./vendor/bin/codecept run --coverage --coverage-html --coverage-xml
 #  - ./vendor/bin/phpunit --coverage-clover=phpunit-coverage.xml
 #  - ./vendor/bin/phpmd src text ./ruleset.xml
-#  - ./vendor/bin/phpcs
+  - ./vendor/bin/phpcs
 #  - ./vendor/bin/psalm
 #  - ./vendor/bin/phpspec run
 #  - ./vendor/bin/clover-merge -o coverage.xml phpunit-coverage.xml phpspec-coverage.xml

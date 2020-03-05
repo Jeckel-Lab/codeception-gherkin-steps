@@ -1,2 +1,11 @@
 parameters:
-    tasks: { codeception: null }
+    tasks:
+      codeception: null
+      phpmd:
+        whitelist_patterns:
+          - /^src\/(.*)/
+        ruleset:
+          - ./ruleset.xml
+      phpcs:
+        whitelist_patterns:
+          - /^src\/(.*)/
